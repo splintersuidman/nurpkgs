@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> {} }:
 rec {
+  lib = import ./lib { inherit (pkgs) lib; };
   # home-manager modules
   hmModules = import ./hm-modules;
   # A list of all modules in hmModules.
