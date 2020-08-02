@@ -1,4 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
+let
+  sources = pkgs.callPackage ./nix/sources.nix { };
+in
 rec {
   lib = import ./lib { inherit (pkgs) lib; };
   # home-manager modules
@@ -12,5 +15,5 @@ rec {
   mopidy-podcast = pkgs.callPackage ./pkgs/mopidy-podcast { };
   ocamlweb = pkgs.callPackage ./pkgs/ocamlweb { };
   onedrive = pkgs.callPackage ./pkgs/onedrive { };
-  passenv = pkgs.callPackage ./pkgs/passenv { };
+  passenv = pkgs.callPackage ./pkgs/passenv { inherit sources; };
 }

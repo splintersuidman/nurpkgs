@@ -1,3 +1,2 @@
-{ pkgs }:
-let sources = import ../../nix/sources.nix; in
+{ pkgs, sources }:
 pkgs.haskellPackages.callPackage "${sources.passenv}/passenv.nix" { }

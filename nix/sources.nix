@@ -1,12 +1,6 @@
-let
-  fetchGitHubTarball = { owner, repo, rev, sha256 }:
-    fetchTarball {
-      url = "https://github.com/${owner}/${repo}/archive/${rev}.tar.gz";
-      inherit sha256;
-    };
-in
+{ fetchFromGitHub }:
 {
-  passenv = fetchGitHubTarball {
+  passenv = fetchFromGitHub {
     owner = "splintah";
     repo = "passenv";
     rev = "00f6d61f741a6928984477b7da07c421be77ec85";
