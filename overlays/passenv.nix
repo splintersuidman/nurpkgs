@@ -9,12 +9,7 @@ in
 {
   haskell = super.haskell // {
     packageOverrides = haskellSelf: haskellSuper: {
-      passenv = haskellSelf.callPackage (src + "/passenv.nix") { };
+      passenv = haskellSelf.callPackage "${src}/passenv.nix" { };
     };
   };
-  # haskellPackages = super.haskellPackages.override {
-  #   overrides = haskellSelf: haskellSuper: {
-  #     passenv = haskellSelf.callPackage (src + "/passenv.nix") { };
-  #   };
-  # };
 }
