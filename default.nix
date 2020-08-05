@@ -2,10 +2,13 @@
 let
   sources = pkgs.callPackage ./nix/sources.nix { };
 in
-rec {
+let
+  hmModules = import ./hm-modules;
+in
+{
   lib = import ./lib { inherit (pkgs) lib; };
   # home-manager modules
-  hmModules = import ./hm-modules;
+  inherit hmModules;
   # A list of all modules in hmModules.
   allHmModules = builtins.attrValues hmModules;
   # Overlays
