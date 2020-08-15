@@ -1,8 +1,6 @@
 { pkgs ? import <nixpkgs> {} }:
 let
-  sources = pkgs.callPackage ./nix/sources.nix { };
-in
-let
+  sources = import ./nix/sources.nix;
   hmModules = import ./hm-modules;
 in
 {
