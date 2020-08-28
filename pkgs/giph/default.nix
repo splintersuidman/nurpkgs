@@ -1,12 +1,14 @@
-{ stdenv, lib, makeWrapper, ffmpeg, xdotool, slop, libnotify, procps }:
+{ stdenv, lib, makeWrapper, fetchFromGitHub, ffmpeg, xdotool, slop, libnotify, procps }:
 let
   path = lib.makeBinPath [ ffmpeg xdotool slop libnotify procps ];
 in
 stdenv.mkDerivation rec {
   pname = "giph";
   version = "1.1";
-  src = fetchTarball {
-    url = "https://github.com/phisch/giph/archive/${version}.tar.gz";
+  src = fetchFromGitHub {
+    owner = "phisch";
+    repo = "giph";
+    rev = version;
     sha256 = "0migk1jjbhyy01ljvcq82ncb0rgyh3j1d8ap2w1hhdky72c02jln";
   };
 
